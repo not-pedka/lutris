@@ -77,8 +77,8 @@ class ItchIoGameTraits:
 
     def __init__(self, traits):
         self._traits = traits
-        self.windows = bool("p_windows" in traits)
         self.linux = bool("p_linux" in traits)
+        self.windows = not self.linux or bool("p_windows" in traits)
         self.can_be_bought = bool("can_be_bought" in traits)
         self.has_demo = bool("has_demo" in traits)
 
@@ -272,8 +272,8 @@ class ItchIoService(OnlineService):
         games = self.get_owned_games()
         filtered_games = []
         for game in games:
-            traits = game.get("traits", {})
-            if any(platform in traits for platform in self.supported_platforms):
+            # traits = game.get("traits", {})
+            if True:  # any(platform in traits for platform in self.supported_platforms):
                 filtered_games.append(game)
         return filtered_games
 
@@ -351,13 +351,13 @@ class ItchIoService(OnlineService):
                 {"extract": {"file": "itchupload", "dst": "$CACHE"}},
                 {"merge": {"src": "$CACHE", "dst": "$GAMEDIR"}},
             ]
-        elif "p_windows" in details["traits"]:
+        else:  # elif "p_windows" in details["traits"]:
             runner = "wine"
             game_config = {"exe": AUTO_WIN32_EXE}
             script = [{"task": {"name": "create_prefix"}}, {"install_or_extract": "itchupload"}]
-        else:
-            logger.warning("No supported platforms found")
-            return {}
+        # else:
+        #    logger.warning("No supported platforms found")
+        #    return {}
 
         return {
             "name": db_game["name"],
@@ -381,7 +381,7 @@ class ItchIoService(OnlineService):
         if "p_windows" in details["traits"]:
             return "wine"
 
-        return ""
+        return "wine"  # return ""
 
     def get_game_platforms(self, db_game: dict) -> List[str]:
         platforms = []
@@ -393,7 +393,7 @@ class ItchIoService(OnlineService):
         if "p_windows" in details["traits"]:
             platforms.append("Windows")
 
-        return platforms
+        return platforms or ["Windows"]
 
     def _check_update_with_db(self, db_game, key, upload=None):
         stamp = 0
@@ -547,7 +547,7 @@ class ItchIoService(OnlineService):
                 # default =  games/tools ("executables")
                 if upload["type"] == "default" and (installer.runner in ("linux", "wine")):
                     is_linux = installer.runner == "linux" and "p_linux" in upload["traits"]
-                    is_windows = installer.runner == "wine" and "p_windows" in upload["traits"]
+                    is_windows = not is_linux or installer.runner == "wine" and "p_windows" in upload["traits"]
                     is_demo = "demo" in upload["traits"]
                     if not (is_linux or is_windows):
                         continue
