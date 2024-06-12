@@ -22,16 +22,16 @@ msgstr "Lutris"
 
 #: share/applications/net.lutris.Lutris.desktop:5
 msgid "Video Game Preservation Platform"
-msgstr ""
+msgstr "Platforma do Prezerwacji Gier Wideo"
 
 #: share/applications/net.lutris.Lutris.desktop:7
 msgid "gaming;wine;emulator;"
-msgstr ""
+msgstr "gaming;wine;emulator"
 
 #: share/metainfo/net.lutris.Lutris.metainfo.xml:11
 #: share/lutris/ui/about-dialog.ui:18
 msgid "Video game preservation platform"
-msgstr ""
+msgstr "Platforma do prezerwacji gier wideo"
 
 #: share/metainfo/net.lutris.Lutris.metainfo.xml:14
 msgid "Main window"
@@ -44,6 +44,9 @@ msgid ""
 "implementations and compatibility layers, it gives you a central interface "
 "to launch all your games."
 msgstr ""
+"Lutris pomaga przy instalacji i grze w gry wideo z każdej ery i z większości "
+"systemów. Przy pomocy rozmaitych emulatorów, reimplementacji silników i warstw kompatybilności,"
+"Lutris zapewnia zcentralizowany interfejs pozwalający na uruchomienie wszysktich Twoich gier."
 
 #: share/metainfo/net.lutris.Lutris.metainfo.xml:30
 msgid "Add Steam account switcher to handle multiple Steam accounts"
@@ -55,7 +58,7 @@ msgstr "na tym samym urządzeniu."
 
 #: share/metainfo/net.lutris.Lutris.metainfo.xml:32
 msgid "Add user defined tags / categories"
-msgstr ""
+msgstr "Dodaj etykietę / kategorię zdefiniowaną przez użytkownika"
 
 #: share/metainfo/net.lutris.Lutris.metainfo.xml:33
 msgid "Group every API calls for runtime updates in a single one"
@@ -63,7 +66,7 @@ msgstr ""
 
 #: share/metainfo/net.lutris.Lutris.metainfo.xml:34
 msgid "Download appropriate DXVK and VKD3D versions based on"
-msgstr ""
+msgstr "Pobierz odpowiednie wersje DXVK i VKD3D bazujące na"
 
 #: share/metainfo/net.lutris.Lutris.metainfo.xml:35
 msgid "the available GPU PCI IDs"
@@ -497,7 +500,7 @@ msgstr ""
 #: lutris/game.py:950
 msgid ""
 "<b>Error: A different Wine version is already using the same Wine prefix.</b>"
-msgstr ""
+msgstr "Inna wersja Wine używa tego samego Wine prefix.</b>\n"
 
 #: lutris/gui/addgameswindow.py:26
 msgid "Search the Lutris website for installers"
